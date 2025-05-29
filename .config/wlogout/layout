@@ -1,0 +1,18 @@
+{
+    "label" : "lock",
+    "action" : "~/.config/wlogout/power.sh lock",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "shutdown",
+    "action" : "~/.config/wlogout/power.sh shutdown",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "~/.config/wlogout/power.sh reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
