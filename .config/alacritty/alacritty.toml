@@ -1,0 +1,71 @@
+# See more config in https://alacritty.org/config-alacritty.html
+#[shell]
+#program = "/usr/bin/tmux"
+#args = ["new-session", "-A", "-s", "tmux"]
+
+[general]
+# Import files (Colors, Fonts, Etc)
+import = ["~/.config/alacritty/themes/coolnight.toml"]
+working_directory = "None"
+
+## Set environment variables
+[env]
+TERM = "xterm-256color"
+
+# Terminal windows settings
+[window]
+padding.x = 0
+padding.y = 0
+
+dimensions.columns = 80
+dimensions.lines = 20
+
+decorations = "None"
+blur = false
+option_as_alt = "Both"
+opacity = 0.9
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[font]
+size = 16
+
+normal.family = "MesloLGSNerdFontMono"
+bold.family = "MesloLGSNerdFontMono"
+italic.family = "MesloLGSNerdFontMono"
+bold_italic.family = "MesloLGSNerdFontMono"
+
+[cursor]
+vi_mode_style = { shape = "Block", blinking = "Always" }
+
+[mouse]
+hide_when_typing = true
+
+# Control + Shift + O to enabled hint, then type char to execute hint command
+[hints]
+alphabet = "jfkdls;ahgvnurieowpq" # Key used for the hint labels
+
+[[hints.enabled]]
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = false
+binding = { key = "O", mods = "Control|Alt" }
+command = "xdg-open"
+
+
+[keyboard]
+bindings = [
+    { key = "J", mods = "Control | Alt", action = "ScrollPageDown" },
+    { key = "K", mods = "Control | Alt", action = "ScrollPageUp" },
+    { key = "N", mods = "Control | Alt", action = "SpawnNewInstance" },
+    { key = "F", mods = "Control | Alt", action = "ToggleFullscreen" },
+    { key = "V", mods = "Alt", action = "ToggleViMode" },
+    { key = "I", mods = "Alt", command = { program = "bash", args = [
+        "-c",
+        "echo 'hello' > /tmp/a.txt",
+    ] } },
+]
