@@ -1,0 +1,81 @@
+# E         -   Toggle EXIF tag display
+# f         -   Toggle fullscreen
+# i         -   Toggle filename display
+# p         -   Pause/Continue the slideshow
+# h         -   Show previous image
+# l         -   Show next image
+# j         -   Jump to the first image of the next sequence of images sharing a directory name in the current filelist
+# k         -   Jump to the first image of the previous sequence of images sharing a directory name in the current filelist
+# s         -   Save current image to current working directory
+# q         -   Quit feh
+# r         -   rotate the image 90 degrees clockwise.
+# R         -   rotate the image 90 degrees counter clockwise.
+# C-r       -   Reload current image
+# a         -   Show first image
+# ;         -   Show last image
+
+
+# Unbinding default key
+toggle_filenames
+# Binding new key
+toggle_filenames i
+
+toggle_info
+toggle_info I
+
+toggle_pause
+toggle_pause p
+
+prev_img
+prev_img h
+
+next_img
+next_img l
+
+prev_dir
+prev_dir k
+
+next_dir
+next_dir j
+
+blur
+blur b
+
+close
+quit
+quit q
+
+toggle_actions
+jump_first a
+jump_last semicolon
+
+# Zoom in and zoom out
+toggle_caption
+zoom_fill v
+zoom_in c
+zoom_out x
+zoom_fit z
+
+# Move image under zoomed mode
+scroll_left C-h
+scroll_right C-l
+scroll_up C-k
+scroll_down C-j 
+
+# Rotate 90 degrees clockwise
+orient_1
+orient_1 r
+
+# Rotate 90 degrees counter clockwise
+orient_3
+render
+orient_3 R
+
+# Relaod image
+reload_image C-r
+
+# File deletion
+remove
+delete
+remove     d   Delete
+delete     D
