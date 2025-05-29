@@ -1,0 +1,476 @@
+"-----------------------------------------------------------
+" IdeaVim Core Config
+"-----------------------------------------------------------
+let mapleader=" "    " Leader key  - <Space>
+set number
+set relativenumber
+set hlsearch
+set scrolloff=2
+set incsearch
+set showmode
+set ignorecase smartcase
+set history=100000
+set showcmd
+set clipboard+=unnamedplus
+" Join multiple lines smarter
+" https://github.com/JetBrains/ideavim/wiki/ideajoin-examples
+set ideajoin
+
+
+"-----------------------------------------------------------
+" IdeaVim Keymaps
+"-----------------------------------------------------------
+inoremap jk <Esc>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>nh :nohl<CR>
+nnoremap H ^
+nnoremap L $
+nnoremap <C-S-x> <C-a>
+nnoremap <c-o> :action Back<CR>
+nnoremap <c-i> :action Forward<CR>
+
+let g:WhichKeyDesc__w = "<leader>w Write Buffer"
+let g:WhichKeyDesc__q = "<leader>q Quit"
+
+
+"-----------------------------------------------------------
+" IntelliJ Idea Keymaps
+"-----------------------------------------------------------
+"---------------------------------------
+" Open Tool Window
+"---------------------------------------
+" <A-1>                    Project
+" <A-2>                    Bookmark
+" <A-3>                    Find
+" <A-4>                    Run
+" <A-5>                    Debug
+" <A-6>                    Problem
+" <A-7>                    Structure
+" <A-8>                    Service
+" <A-9>                    Git
+" <A-0>                    Commit
+" <A-F12>                  Terminal
+" <C-A-s>                  Settings
+" <C-S-A-s>                Project Structure
+
+"---------------------------------------
+" General
+"---------------------------------------
+nnoremap <leader>x :action HideActiveWindow<CR>
+" <C-C>                    Run anything
+" <C-A-j>                  Surround with Live Template
+" <S-F6>                   Rename file
+" <C-S-F12>                Toggle maximizing editor
+" <A-S-i>                  Inspect current file with current profile
+" <C-`>                    Quick switch current scheme
+" <S-Esc>                  Hide active or last active window
+
+let g:WhichKeyDesc__x = "<leader>x Hide Active Window"
+
+
+"---------------------------------------
+" Actions
+"---------------------------------------
+" There are too much actions in IDEA, you can't map them all
+" <C-a> calls action search, you can type action name or abbreviation to call them
+" e.g., <C-a> + {c gis} will show create gist action
+nnoremap <C-a> :action GotoAction<CR>
+" <C-a>                  Find and run any action
+" oog                    Open On Github
+" gb                     Git Branch
+" cwb                    Compare With Branch
+" gf                     Git Fetch
+" log                    Git Log
+" merge                  Git Merge
+" pull                   Git Pull
+" rebase                 Git Rebase
+" reset h                Reset Head
+" ro                     Roll Back (Revert)
+" sta                    Stash Changes
+" u sta                  Unstash Changes
+" cgis                   Create gist
+" pull r                 Create Pull Request
+
+
+
+"---------------------------------------
+" Edit
+"---------------------------------------
+nnoremap <c-g> :action Generate<CR>
+nnoremap <leader>gg :action GenerateGetter<CR>
+nnoremap <leader>gs :action GenerateSetter<CR>
+nnoremap <leader>ga :action GenerateGetterAndSetter<CR>
+nnoremap <leader>gS :action GenerateSetUpMethod<CR>
+nnoremap <leader>ge :action GenerateEquals<CR>
+nnoremap <leader>gc :action GenerateConstructor<CR>
+nnoremap <leader>gt :action GenerateTestMethod<CR>
+nnoremap <leader>re :action RenameElement<CR>
+" Use Shift+Enter to complete statement
+inoremap <s-cr> <Esc>:action EditorCompleteStatement<CR>i
+" <C-g>                    Generate code
+" <A-i>                    Implement method
+" <A-o>                    Override method
+" <S-j>                    Smart line join
+" <C-Enter>                Smart line split
+" <S-Enter>                Start new line
+" <C-S-Enter>              Complete statement
+" <A-Enter>                Show intention actions and quick-fixes
+" <C-Space>                Basic code completion
+" <C-p>                    Parameter info
+" <C-q>                    Quick documentation lookup
+" <C-;>                    Extend selection (Origin <C-w> was taken by ideavim)
+" <C-S-w>                  Shrink selection
+" <C-F1>                   Show descriptions of error at caret
+" <C-A-t>                  Surround with
+" <C-/>                    Line comment
+" <C-S-/>                  Block comment
+" <C-S-Space>              Smart code completion
+" <C-A-i>                  Auto indent lines
+" <C-A-l>                  Reformat code
+" <C-A-o>                  Optimize import
+" za                       Toggle folder
+" zc                       Collapse
+" zo                       Expand
+" zM                       Collapse all
+" zR                       Expand all
+
+let g:WhichKeyDesc__g = "<leader>g Generate Code"
+let g:WhichKeyDesc__gg = "<leader>gg Getter"
+let g:WhichKeyDesc__gs = "<leader>gs Setter"
+let g:WhichKeyDesc__ga = "<leader>ga Getter and Setter"
+let g:WhichKeyDesc__gc = "<leader>gc Constructor"
+let g:WhichKeyDesc__ge = "<leader>ge Equals and hashCode"
+let g:WhichKeyDesc__gS = "<leader>gS Generate Setup Method"
+let g:WhichKeyDesc__gt = "<leader>gt Generate Test Method"
+let g:WhichKeyDesc__r = "<leader>r Rename"
+let g:WhichKeyDesc__re = "<leader>re Rename Element"
+
+
+
+"---------------------------------------
+" Search
+"---------------------------------------
+" <S-S>                    Search everywhere
+" <C-n>                    Find class
+" <C-S-n>                  Find file
+" <C-S-A-s>n               Find symbol
+" <C-e>                    Recent files popup
+" <C-S-e>                  Recent locations popup
+" <C-S-f>                  Search in path (search across project)
+" <C-S-r>                  Replace in path
+
+
+"---------------------------------------
+" Navigation
+"---------------------------------------
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]m :action MethodDown<CR>
+nnoremap [m :action MethodUp<CR>
+nnoremap ]g :action VcsShowNextChangeMarker<CR>
+nnoremap [g :action VcsShowPrevChangeMarker<CR>
+nnoremap [[ :action EditorCodeBlockStart<CR>
+vnoremap [[ :action EditorCodeBlockStartWithSelection<CR>
+nnoremap ]] :action EditorCodeBlockEnd<CR>
+vnoremap ]] :action EditorCodeBlockEndWithSelection<CR>
+" <C-b>                    Go to declaration (Variable)
+" <C-S-b>                  Go to type declaration (Class)
+" <C-A-b>                  Go to implementations
+" <C-u>                    Go to super-method/ super-class
+" <C-h>                    Show type hierarchy
+" <F2> / <S-F2>            Next/Previous highlighted error
+" <C-S-h>                  Show method hierarchy
+" <C-S-i>                  Open quick definition lookup
+" <C-S-t>                  Navigate to test
+
+let g:WhichKeyDesc_bsquare_e = "[e Previous Error"
+let g:WhichKeyDesc_square_e = "]e Next Error"
+let g:WhichKeyDesc_bsquare_m = "[m Previous Method"
+let g:WhichKeyDesc_square_m = "]m Next Method"
+let g:WhichKeyDesc_bsquare_g = "[g Previous Git Change"
+let g:WhichKeyDesc_square_g = "]g Next Git Change"
+let g:WhichKeyDesc_bsquare_bsquare = "[[ Code Block Start"
+let g:WhichKeyDesc_square_square = "]] Code Block End"
+
+
+"---------------------------------------
+" Refactoring
+"---------------------------------------
+" <F5>                     Copy
+" <F6>                     Move
+" <S-F6>                   Rename
+" <C-A-S-t>                Refactor this
+" <C-A-n>                  Inline
+" <C-A-m>                  Extract method
+" <C-A-v>                  Extract variable (method level)
+" <C-A-f>                  Extract field (class level)
+" <C-A-c>                  Extract constant
+" <C-A-p>                  Extract parameter
+" <C-S-Space>              Smart code completion
+" <C-A-S-Left>             Move parameter to left
+" <C-A-S-Right>            Move parameter to right
+
+
+"---------------------------------------
+" Compile & Run & Debug
+"---------------------------------------
+" <C-F2>                  Stop Debug
+
+" <F7>                    Step into
+" <S-F7>                  Smart step into
+
+" <F8>                    Step over
+" <S-F8>                  Step out
+" <C-F8>                  Toggle breakpoint
+" <C-S-F8>                View breakpoint
+
+" <F9>                    Resume program
+" <S-F9>                  Debug
+" <C-F9>                  Build project
+" <C-S-F9>                Compile selected file, package or module
+" <A-F9>                  Run to cursor
+" <A-S-F9>                Select configuration and debug
+
+" <F10>                   Run
+" <A-S-F10>               Select configuration and run
+" <C-S-F10>               Run context configuration from editor
+
+
+
+"---------------------------------------
+" Version Control
+"---------------------------------------
+nnoremap <leader>G :action Git.ContextMenu<CR>
+" <C-k>                    Commit project to Git
+" <C-S-k>                  Push commits
+" <C-t>                    Update project from Git
+" <A-`>                    VCS quick popup
+
+
+"------------------------------------------------------------
+" Ideavim Register
+"------------------------------------------------------------
+" "     Default register. Delete / Yank
+" 0     Latest yanked text
+" 1-9   Have last 9 deleted text
+" a-z   Explicitly use. e.g. "xyy  yank a line to register x
+" .     Last inserted text
+" :     Most recently executed command. Use @: to execute last command again
+" +     Clipboard register. {let @+=@%} copy current filepath to clipboard
+" -     Last deleted characters
+" =     Store Vim expression. e.g. {<C-r>=2+2} insert 4 to current cursor
+" /     Search register. {echo @/} show what you last searched for
+
+
+"------------------------------------------------------------
+" Window
+"------------------------------------------------------------
+nnoremap <leader>sh <C-w>s
+nnoremap <leader>sv <C-w>v
+nnoremap <leader>\\ :action MaximizeEditorInSplit<CR>
+
+let g:WhichKeyDesc__s = "<leader>s Split"
+let g:WhichKeyDesc__sh = "<leader>sh Split Horizontally"
+let g:WhichKeyDesc__sv = "<leader>sv Split Vertically"
+let g:WhichKeyDesc__bslash = "<leader><Bslash> Toggle Maximize for Split"
+
+
+
+"-----------------------------------------------------------
+" Tab
+"-----------------------------------------------------------
+nnoremap <leader>sj :action MoveTabDown<CR>
+nnoremap <leader>sl :action MoveTabRight<CR>
+nnoremap <leader>su :action Unsplit<CR>
+nnoremap <leader>sU :action UnsplitAll<CR>
+
+let g:WhichKeyDesc__sj = "<leader>sj Split Tab to Bottom"
+let g:WhichKeyDesc__sl = "<leader>sl Split Tab to Right"
+let g:WhichKeyDesc__su = "<leader>su Unsplit Current Window"
+let g:WhichKeyDesc__sU = "<leader>sU Unsplit All Window"
+
+
+"-----------------------------------------------------------
+" Bookmark
+"-----------------------------------------------------------
+" Jump to bookmark easier
+nnoremap ' `
+" Set bookmark 0:       m0, <C-S-0>
+" Unset bookmark 0:     mx, <C-S-0>
+" Jump to bookmark 0:   `0, <C-0>
+nnoremap mm :action ToggleBookmarkWithMnemonic<CR>
+nnoremap mx :action ToggleBookmark<CR>
+nnoremap ms :action ShowBookmarks<CR>
+nnoremap ]b :action GotoNextBookmark<CR>
+nnoremap [b :action GotoPreviousBookmark<CR>
+
+let g:WhichKeyDesc_mm = "mm Set Bookmark"
+let g:WhichKeyDesc_mx = "mx Toggle Bookmark"
+let g:WhichKeyDesc_ms = "ms Show Bookmarks"
+let g:WhichKeyDesc_square_b = "]b Next Bookmark"
+let g:WhichKeyDesc_bsquare_b = "[b Previous Bookmark"
+
+
+"-----------------------------------------------------------
+" Git
+"-----------------------------------------------------------
+
+"-----------------------------------------------------------
+" EasyMotion (IdeaVim-EasyMotion, AceJump are needed)
+"-----------------------------------------------------------
+set easymotion
+map s <Plug>(easymotion-s)
+" Remap <ll>s {chars}
+" <ll> means type leader two times
+" <ll>s {chars}         Find {chars} forward and backward
+" <ll>f/F {chars}       Find {chars} to the right/left
+" <ll>t/T {chars}       Till before the {chars} to the right/left
+" <ll>w/W               Beginning of the word/WORD forward
+" <ll>b/B               Beginning of the word/WORD backward
+" <ll>e/E               End of the word/WORD forward
+" <ll>ge/gE             End of the word/WORD backward
+" <ll>j/k               Line downward/upward
+" <ll>n/N               Jump to latest "/" or "?" forward/backward
+
+let g:WhichKeyDesc__ = "<leader><leader> EasyMotion"
+
+
+
+"-----------------------------------------------------------
+" NerdTree
+"-----------------------------------------------------------
+set NERDTree
+nnoremap <leader>ee :NERDTree<CR>
+nnoremap <leader>ef :NERDTreeFind<CR>
+nnoremap <leader>er :NERDTreeRefreshRoot<CR>
+nmap <A-n> :action NewElement<CR>
+let g:NERDTreeMapActivateNode = "<Tab>"
+let g:NERDTreeMapOpenSplit = "s"
+let g:NERDTreeMapOpenVSplit = "v"
+let g:NERDTreeMapOpenRecursively = "e"
+let g:NERDTreeMapCloseChildren = "c"
+let g:NERDTreeMapNewFile = "a"
+let g:NERDTreeMapNewDir = "A"
+let g:NERDTreeMapToggleZoom = "z"
+" q                     Quit Nerdtree
+" m                     Menu
+" Tab                   Open files, directories, bookmarks
+" s                     Open file in split horizontally
+" v                     Open file in split vertically
+" c                     Collapse directories
+" e                     Expand directories
+" p                     Jump to current nodes parent
+" P                     Jump to root
+" J                     First sibling
+" K                     Last sibling
+" <C-j>                 Next sibling
+" <C-k>                 First sibling
+" r                     Refresh current directory
+" R                     Recursively refresh the current root
+" z                     Zoom (maximize/minimize) the NerdTree window
+" d                     Delete file or directory
+" a                     Create file
+" A                     Create directory
+" Space                 Preview file
+
+let g:WhichKeyDesc__e = "<leader>e NerdTree"
+let g:WhichKeyDesc__ee = "<leader>ee NerdTree Open"
+let g:WhichKeyDesc__ef = "<leader>ef NerdTree Find"
+let g:WhichKeyDesc__er = "<leader>er NerdTree Refresh"
+
+"-----------------------------------------------------------
+" Surround
+"-----------------------------------------------------------
+set surround
+" ysiwb                 Add ( ) to a word, b means ()
+" ysiwB                 Add { } to a word, B means {}
+" ysW(                  Add surround to a WORD
+" yss(                  Add surround to a line, ignore lead white space
+" ds"                   Delete surround    dst (delete surround tag)
+" cs[(                  Change surround    cs"<q>     cst<b>
+" vllls"                Add surround to visual select content
+
+
+"-----------------------------------------------------------
+" Comment
+"-----------------------------------------------------------
+set commentary
+" gc{motion}
+" gcc                   Comment or uncomment [count] lines
+" Visual{gc}            Comment or uncomment highlighted lines
+" gcu                   Uncomment
+
+let g:WhichKeyDesc_gc = "gc Comment"
+let g:WhichKeyDesc_gcc = "gcc Comment Current Line"
+let g:WhichKeyDesc_gcu = "gcu Undo Comment"
+
+
+"-----------------------------------------------------------
+" Replace With Register
+"-----------------------------------------------------------
+set ReplaceWithRegister
+" [count]["x]gr{motion} Replace {motion} text with the contents of register x
+" [count]["x]grr        Replace [count] lines with the contents of register x
+" {visual}["x]gr        Replace the selection with the contents of register x
+
+let g:WhichKeyDesc_gr = "gr Replace with Register"
+
+
+
+"-----------------------------------------------------------
+" Text Objects
+"-----------------------------------------------------------
+set argtextobj
+" cia                   Change argument
+
+
+"-----------------------------------------------------------
+" Exchange text in two places
+"-----------------------------------------------------------
+set exchange
+" cx{motion}            Used in pairs
+" cxx                   Like cx, but for the current line
+" cxc                   Clear any defined of text
+" {visual}X             Can be used in visual mode
+
+
+"-----------------------------------------------------------
+" Text Object - Entire
+"-----------------------------------------------------------
+set textobj-entire
+" yie                   Yank entire buffer
+
+
+"-----------------------------------------------------------
+" Highlight Yanked content
+"-----------------------------------------------------------
+set highlightedyank
+
+
+"-----------------------------------------------------------
+" Text Object - Indent
+"-----------------------------------------------------------
+set textobj-indent
+" vii                   Visual select same indent level content
+" vai                   An indent level and line above
+" vaI                   An indent level and lines above/below
+
+
+"-----------------------------------------------------------
+" Match Whole Words
+"-----------------------------------------------------------
+set matchit
+" You can use % to match if, else, else if, not just single character
+
+
+"-----------------------------------------------------------
+" Which Key
+"-----------------------------------------------------------
+set which-key
+" disable the timeout option
+set notimeout
+let g:WhichKey_FontSize = 22
+let g:WhichKey_KeyColor = "#48c3d4"
+let g:WhichKey_SortOrder = "by_key_prefix_last"
+let g:WhichKey_SortCaseSensitive = "false"
