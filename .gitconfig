@@ -1,5 +1,3 @@
-[user]
-    useConfigOnly = true
 [init]
     defaultBranch = master
 [core]
@@ -12,6 +10,8 @@
 [credential "https://gist.github.com"]
 	helper = !/usr/bin/gh auth git-credential
 [commit]
+	gpgSign = true
+[tag]
 	gpgSign = true
 [help]
 	autocorrect = 1
