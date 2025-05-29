@@ -1,0 +1,97 @@
+# See more in: https://github.com/pwmt/zathura/blob/develop/doc/man/zathurarc.5.rst
+
+# h/j/k/l
+#   Scroll to left, down, up, right
+
+# J/K
+#   Page down, up
+
+# ^t, ^d, ^u, ^y
+#   Scroll half page left, down, up, right
+
+# gg, G, 20G
+#   Move to top, bottom, page 20
+
+# P 
+#   Snaps to current page
+
+# H, L
+#   Go to top or bottom of current page
+
+# ^o, ^i
+#   Move backward, forward through the jump list
+
+# c,x,z,v
+#   Zoom in, out, best-fit, width mode
+
+# /, ?
+#   Search forward, backward
+
+# n, N
+#   Jump to next, previous result
+
+# o, O
+#   Open documents
+
+# i, I
+#   Display links, follow links
+
+# r, ^r
+#   Invert color, reload document
+
+# Tab
+#   Show bookmarks, enter Index Mode.
+#   k, j        move up or lower entry
+#   h, l        collapse, expand entry
+#   H, L        collapse, expand all entries
+#   ^j, Space   open entry
+
+# d, D
+#   Toggle dual page view, cycle opening column in dual page view
+
+# ^m, ^n
+#   Toggle input bar, status bar
+
+# mX, 'X
+#   Set a quickmark to X, goto quickmark X
+
+# q
+#   Quit
+
+
+set zoom-max 2000
+set font "MesloLGSNerdFontMono normal 16"
+set database sqlite
+# copy selection to system clipboard
+set selection-clipboard clipboard
+# Show nothing while boot
+set guioptions ""
+
+
+unmap =
+unmap a
+unmap s
+unmap F
+unmap R
+
+# Normal mode
+map c zoom in
+map x zoom out
+map z adjust_window width
+map v adjust_window best-fit
+map r recolor
+map <C-r> reload
+map f toggle_fullscreen
+map i display_link
+map I follow
+
+# Fullpage mode
+map [fullscreen] c zoom in
+map [fullscreen] x zoom out
+map [fullscreen] z adjust_window width
+map [fullscreen] v adjust_window best-fit
+map [fullscreen] r recolor
+map [fullscreen] <C-r> reload
+map [fullscreen] f toggle_fullscreen
+map [fullscreen] i display_link
+map [fullscreen] I follow
