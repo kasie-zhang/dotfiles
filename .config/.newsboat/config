@@ -1,0 +1,42 @@
+browser "qutebrowser %u"
+bookmark-autopilot yes
+show-keymap-hint no
+#show-title-bar no
+search-highlight-colors white black bold
+color listnormal          white   default
+color listfocus           black   color81   bold
+color listfocus_unread    black   color81   bold
+color listnormal_unread   yellow  default bold
+color article             default default
+color title               red   default bold
+
+
+
+unbind-key UP
+unbind-key DOWN
+unbind-key HOME
+unbind-key END
+unbind-key N
+unbind-key ^V
+unbind-key ^G
+
+
+bind-key c purge-deleted
+bind-key k up 
+bind-key j down 
+bind-key K halfpageup 
+bind-key J halfpagedown
+bind-key 0 home 
+bind-key $ end 
+bind-key SPACE toggle-article-read
+bind-key t toggle-show-read-feeds
+bind-key l next-feed
+bind-key h prev-feed
+bind-key z random-unread
+bind-key ^o prev-dialog
+bind-key TAB next-dialog
+
+# Predefined filter
+define-filter test "title =~ \"tomorrow\""
+
+bookmark-cmd "~/.newsboat/save-bookmarks.sh"
