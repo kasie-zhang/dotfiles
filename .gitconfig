@@ -1,0 +1,154 @@
+[user]
+    useConfigOnly = true
+[init]
+    defaultBranch = master
+[core]
+	editor = nvim
+	hookspath = ~/.config/git/hooks
+    symlinks = true
+    pager = delta
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[commit]
+	gpgSign = true
+[help]
+	autocorrect = 1
+[diff]
+	tool = meld
+    colorMoved = default
+[merge]
+	tool = meld
+    conflictstyle = diff3
+[delta]
+    dark = true
+    line-numbers = true
+    navigate = true
+    hyperlinks = true
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+    side-by-side = true
+    true-color = always
+[interactive]
+    diffFilter = delta --color-only
+[pack]
+    threads = 12
+[alias]
+    ; https://gist.github.com/pksunkara/988716
+    a = add --all
+    ai = add -i
+    ac = apply --check
+    as = apply --stat
+    ap = apply
+    ##########
+    b = branch
+    ba = branch -a
+    bd = branch -d
+    bd = branch -D
+    br = branch -r
+    bv = branch -v
+    ##########
+    c = commit
+    ca = commit -a  ; stage all tracked file and commit them
+    cm = commit -m
+    cam = commit -am
+    cem = commit --allow-empty -m
+    cd = commit --amend
+    cad = commit -a --amend  ; Add new changes to the last commit
+    ced = commit --allow-empty --amend
+    ##########
+    cl = clone
+    cld = clone --depth 1
+    ##########
+    cp = cherry-pick
+    cpa = cherry-pick --abort
+    cpc = cherry-pick --continue
+    ##########
+    d = diff ; <Staging Area> vs. <Working Directory> (Only tracked files)
+    dp = diff --patience
+    dc = diff --check
+    ds = diff --staged ; <Staging Area> vs. <Last Commit>
+    dsc = diff --staged --check
+    dt = difftool
+    dst = difftool --staged
+    ##########
+    f = fetch
+    fo = fetch origin
+    fu = fetch upstream
+    ##########
+    fp = format-patch --signoff
+    ##########
+    fk = fsck
+    ##########
+    g = grep -n --break -p
+    ##########
+    l = log --oneline
+    ll = log -1 HEAD
+    lg = log --oneline --graph --decorate
+    ##########
+    ls = ls-files
+    lsf = !git ls-files | grep -i
+    ##########
+    m = merge
+    ma = merge --abort
+    mc = merge --continue
+    ##########
+    pr = prune -v
+    ##########
+    ps = push
+    psu = push -u
+    pst = push --tags
+    ##########
+    pso = push origin
+    psao = push --all origin
+    psuo = push -u origin
+    ##########
+    pl = pull
+    pb = pull --rebase
+    ##########
+    rb = rebase
+    ##########
+    re = reset
+    reh = reset --hard
+    rem = reset --mixed ; keep changes, keep untrack
+	res = reset --soft ; keep changes, keep track (in stage)
+    resl = reset --soft HEAD^ ; Undo last commit
+	rehh = reset --hard HEAD
+	remh = reset --mixed HEAD
+	resh = reset --soft HEAD
+	rehom = reset --hard origin/master
+    ##########
+    r = remote
+    ra = remote add
+    rr = remote rm
+    rv = remote -v
+    rn = remote rename
+    rp = remote prune
+	rs = remote show
+	rao = remote add origin
+	rau = remote add upstream
+	rro = remote remove origin
+	rru = remote remove upstream
+	rso = remote show origin
+	rsu = remote show upstream
+	rpo = remote prune origin
+	rpu = remote prune upstream
+    ##########
+    s = status
+    sb = status -s -b
+    ##########
+    sa = stash apply
+    sc = stash clear
+    sd = stash drop
+    sl = stash list
+    ss = stash save
+    ssk = stash save -k
+    sp = stash pop
+    sw = stash show
+    ##########
+    t = tag
+    td = tag -d
+    w = switch
+    wc = switch -c
+    unstage = reset HEAD --
+    alias = !git config --get-regexp alias | sort | sed 's/alias.//g' | bat
